@@ -14,13 +14,28 @@ html(data-ng-app="bem")
 		section.bem
 
 			section.bem__section
-				div.bem__headline Intro & Syntax
+				h1.bem__headline Intro & Syntax
 				div.bem__intro
 					p .block {}
 					p .block__element {}
-					p .block--modfier {} 
+					p .block--modfier {}
 
+					h3 Block
+					p Blocks er bygge blokke. Disse kan bruges alle steder i html'en.
 
+					h3 Element
+					p Elementer er en del af blokke. Disse skal være indrammmet af en blok.
+					//p Elementerne er alt som har en relation til blokken.
+					p Elementer bruger altid blok navnet som prefix. Ex blockname__elementname.
+
+					h3 Modifier
+					p Modifier er states, themes, variationer osv af blokke eller elementer.
+					p En modifier skrives altid med --modifiername.
+					p Eks. block--modifier eller block__element--modifier
+					p Modifier er et af de få steder hvor specifikationsniveauet hæves med (0,1,0). Se eksempel 3.1
+
+					p
+						a(href="http://www.smashingmagazine.com/2012/04/16/a-new-front-end-methodology-bem/", target="_blank") Et godt skriv om BEM
 
 			section.bem__section
 				div.bem__headline Ex.1.1 Btn
@@ -190,6 +205,11 @@ html(data-ng-app="bem")
 							div.block__element Element
 							div.block__element Element
 							div.block__element Element
+
+			section.bem__section
+				div.bem__headline Ex.4.1 Variation of BEM
+				p Comming soon!
+
 
 
 	script(src='./scripts/bem.js')
