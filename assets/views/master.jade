@@ -1,0 +1,195 @@
+doctype html
+html(data-ng-app="bem")
+	head
+		title BEM
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1 user-scalable=no")
+		link(rel='stylesheet', href='./css/bem.css')
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Gudea:400,700,400italic')
+		// Main app js
+		script(src='./scripts/head.js')
+		block head
+	body
+		block body
+		section.bem
+
+			section.bem__section
+				div.bem__headline Intro & Syntax
+				div.bem__intro
+					p .block {}
+					p .block__element {}
+					p .block--modfier {} 
+
+
+
+			section.bem__section
+				div.bem__headline Ex.1.1 Btn
+				div.bem__code
+					div.bem__headline Code:
+					div.bem__inner.bem__inner--blue
+						textarea.bem__textarea
+							| <div class="btn">Btn</btn>
+						textarea.bem__textarea.bem__textarea--css.
+							.btn {
+								display: block;
+								padding: 10px;
+								background-color: #000;
+								color: #fff;
+								cursor: pointer;
+							}
+							.btn--orange {
+								background-color: #daa520;
+								color: #000;
+							}
+
+				div.bem__view
+					div.bem__headline View:
+					div.bem__inner.bem__inner--green
+						div.btn Btn
+
+			section.bem__section
+				div.bem__headline Ex.1.2 Btn
+				div.bem__code
+					div.bem__headline Code:
+					div.bem__inner.bem__inner--blue
+						textarea.bem__textarea
+							| <div class="btn btn--orange">Btn</btn>
+						textarea.bem__textarea.bem__textarea--css.
+							.btn {
+								display: block;
+								padding: 10px;
+								background-color: #000;
+								color: #fff;
+								cursor: pointer;
+							}
+							.btn--orange {
+								background-color: #daa520;
+								color: #000;
+							}
+
+				div.bem__view
+					div.bem__headline View:
+					div.bem__inner.bem__inner--green
+						div.btn.btn--orange Btn
+
+
+			section.bem__section
+				div.bem__headline Ex.2.1 Header
+				div.bem__code
+					div.bem__headline Code:
+					div.bem__inner.bem__inner--blue
+						textarea.bem__textarea.bem__textarea--css.
+							<div class="header">
+								<div class="header__logo">Logo</div>
+								<div class="header__nav">
+									<nav class="primnav">
+										<div class="primnav__item primnav__item--active"><a>Link</a></div>
+										<div class="primnav__item"><a>Link</a></div>
+										<div class="primnav__item"><a>Link</a></div>
+									</nav>
+								</div>
+							</div>
+						textarea.bem__textarea.bem__textarea--css.
+							.header {
+								display: block;
+								width: 100%;
+								background-color: #fff;
+								padding: 10px;
+								border-bottom: 1px solid #666;
+							}
+							.header__logo {
+								display: block;
+								width: 100px;
+								height: 30px;
+								background-color: red;
+							}
+							.header__nav {
+								width: 100%;
+								display: block;
+							}
+
+							.primnav {
+								display: block;
+								width: 100%;
+							}
+							.primnav:after {
+								content: "";
+								display: block;
+								clear: both;
+							}
+							.primnav__item {
+								display: block;
+								float: left;
+							}
+							.primnav__item + .primnav__item {
+								margin-left: 10px;
+							}
+							.primnav__item--active {
+								color: red;
+							}
+
+				div.bem__view
+					div.bem__headline View:
+					div.bem__inner.bem__inner--green
+						div.header
+							div.header__logo Logo
+							div.header__nav
+								nav.primnav
+									div.primnav__item.primnav__item--active
+										a Link
+									div.primnav__item
+										a Link
+									div.primnav__item
+										a Link
+
+			section.bem__section
+				div.bem__headline Ex.3.1 Element state depending on parent modifier
+				div.bem__code
+					div.bem__headline Code:
+					div.bem__inner.bem__inner--blue
+						textarea.bem__textarea.bem__textarea--css.
+							<div class="block">Block without modifier
+								<div class="block__element">Element</div>
+								<div class="block__element">Element</div>
+								<div class="block__element">Element</div>
+							</div>
+							<div class="block block--modifier">Block with modifier
+								<div class="block__element">Element</div>
+								<div class="block__element">Element</div>
+								<div class="block__element">Element</div>
+							</div>
+
+						textarea.bem__textarea.bem__textarea--css.
+							.block {
+								display: block;
+								margin-bottom: 10px;
+							}
+							.block__element {
+								display: block;
+								width: 200px;
+								overflow: hidden;
+								background-color: #000;
+								color: #fff;
+								margin-bottom: 5px;
+							}
+							.block--modifier {
+								opacity: 0.6;
+							}
+							.block--modifier .block__element {
+								width: 20px;
+							}
+
+				div.bem__view
+					div.bem__headline View:
+					div.bem__inner.bem__inner--green
+						div.block Block without modifier
+							div.block__element Element
+							div.block__element Element
+							div.block__element Element
+						div.block.block--modifier Block with modifier
+							div.block__element Element
+							div.block__element Element
+							div.block__element Element
+
+
+	script(src='./scripts/bem.js')

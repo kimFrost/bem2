@@ -1,0 +1,475 @@
+extends ../master
+
+block append head
+
+block append body
+
+block append content
+
+	section.partial.container.partial--blue.partial--noBottomPadding
+		div.container__content
+			div.container__inner
+				div.grid.grid--14.grid--spaceright
+					div.rte
+						h1 Velkommen til NemRefusion.dk
+						p NemRefusion er en løsning for arbejdsgivere of selvstændige til indeberetning af sygedagpenge- og barseldagpenge.
+						p Her på siden kan du finde information om, hvordan du indberetter og hvilke regler der gælder.
+						p Når du er klar til at indberette, så tryk på knappen "Gå til indberetning" og du kan starte din indberetning på virk.dk.
+				div.grid.grid--10.grid--spaceleft
+					img(src="./img/content/partial_img_1.png", alt="")
+
+
+	section.partial.container.partial--black
+		div.container__content
+			div.container__inner
+				div.grid.grid--16.grid--spaceright
+					div.rte
+						h1 Er du ny i Nem Refusion?
+						p Som arbejdsgiver er det din pligt, at indberette refusionsdagpenge igennem NemRefusion løsningen.
+						p Læs her hvad du skal have klar før du indberetter, hvilke regler der gælder og hvordan du indberetter.
+						a.btn Kom godt igang med Nemrefusion
+				div.grid.grid--8.grid--spaceleft
+					div.status.color.status--noBottomMargin.color--lightgray.color--bg(data-ng-controller="StatusCtrl", data-ng-class="{'status--isup':statusctrl.states.isup, 'status--error':statusctrl.states.error, 'status--isdown': !statusctrl.states.isup, 'status--pending':statusctrl.states.pending}")
+						div.status__header
+							div.status__icon.status__icon--alignLeft
+								div(ng-show="statusctrl.states.pending").icon.icon--questionCircle
+								div(ng-show="statusctrl.states.error").icon.icon--timescircle
+								div(ng-show="statusctrl.states.success").icon.icon--checkcircle
+							div.status__headline Driftstatus
+							div.status__subline Opdateret klokken&nbsp;
+								span(data-ng-bind="statusctrl.timeupdated")
+						div.rte
+							div(ng-show="statusctrl.states.success").status__status Alle systemer kører
+							div(ng-show="statusctrl.states.error").status__status Der er driftproblemer
+							p Virk udfører systemarbejde d. 04.03 klokken 19-21, hvorfor systemet kan være utilgængeligt
+							div.partial__center
+								a.btn Læs mere
+
+
+	section.partial.container.partial--lagoon
+		div.container__content
+			div.container__inner
+				div.grid.grid--12.grid--spaceright
+					div.rte
+						h2 Hvad er Nem Refusion?
+						p NemRefusion er en intelligent, digital postkasse som forbinder virksomheder og kommuner og optimerer fælles arbejdsgange.
+						p NemRefusion er gratis at anvende for virksomheder, selvstændige og A-kasser. Adgang til løsningen sker med NemID Medarbejdersignatur til Erhverv via Virk.dk eller direkte via virksomhedernes løn-, HR- og fraværssystemer.
+				div.grid.grid--12.grid--spaceleft.query--desktop
+					| Video
+
+
+	section.partial.container
+		div.container__content
+			div.container__inner
+				div.status.color.color--blue.color--bg.status--noBottomMargin
+					div.cluster(data-ng-controller="StatusCtrl", data-statusctrl-getall="true")
+						div.cluster__list
+							div.cluster__item.cluster__item--2x1
+								div.cluster__inner
+									div.status__box(data-ng-class="{'status__box--disabled': !statusctrl.systems.nemrefusion.states.isup}")
+										div.status__icon
+											div.icon.icon--checkcircle(ng-show="statusctrl.systems.nemrefusion.states.isup")
+											div.icon.icon--timescircle(ng-show="!statusctrl.systems.nemrefusion.states.isup")
+											div.icon.icon--questionCircle(ng-show="statusctrl.states.error")
+											div.icon.icon--questionCircle(ng-show="statusctrl.states.pending")
+										div.status__headline NemRefusion
+										div.status__subline(ng-show="statusctrl.systems.nemrefusion.states.isup") Der er forbindelse til NemRefusionen.
+										div.status__subline(ng-show="!statusctrl.systems.nemrefusion.states.isup") Der er ikke forbindelse til NemRefusionen.
+							div.cluster__item.cluster__item--2x1
+								div.cluster__inner
+									div.status__box(data-ng-class="{'status__box--disabled': !statusctrl.systems.cpr.states.isup}")
+										div.status__icon
+											div.icon.icon--checkcircle(ng-show="statusctrl.systems.cpr.states.isup")
+											div.icon.icon--timescircle(ng-show="!statusctrl.systems.cpr.states.isup")
+											div.icon.icon--questionCircle(ng-show="statusctrl.states.error")
+											div.icon.icon--questionCircle(ng-show="statusctrl.states.pending")
+										div.status__headline CPR
+										div.status__subline(ng-show="statusctrl.systems.cpr.states.isup") Der er forbindelse til CPR-registret.
+										div.status__subline(ng-show="!statusctrl.systems.cpr.states.isup") Der er ikke forbindelse til CPR-registret.
+							div.cluster__item.cluster__item--2x1
+								div.cluster__inner
+									div.status__box(data-ng-class="{'status__box--disabled': !statusctrl.systems.cvr.states.isup}")
+										div.status__icon
+											div.icon.icon--checkcircle(ng-show="statusctrl.systems.cvr.states.isup")
+											div.icon.icon--timescircle(ng-show="!statusctrl.systems.cvr.states.isup")
+											div.icon.icon--questionCircle(ng-show="statusctrl.states.error")
+											div.icon.icon--questionCircle(ng-show="statusctrl.states.pending")
+										div.status__headline CVR
+										div.status__subline(ng-show="statusctrl.systems.cvr.states.isup") Der er forbindelse til CVR-registret.
+										div.status__subline(ng-show="!statusctrl.systems.cvr.states.isup") Der er ikke forbindelse til CVR-registret.
+							div.cluster__item.cluster__item--2x1
+								div.cluster__inner
+									div.status__box(data-ng-class="{'status__box--disabled': !statusctrl.systems.eindkomst.states.isup}")
+										div.status__icon
+											div.icon.icon--checkcircle(ng-show="statusctrl.systems.eindkomst.states.isup")
+											div.icon.icon--timescircle(ng-show="!statusctrl.systems.eindkomst.states.isup")
+											div.icon.icon--questionCircle(ng-show="statusctrl.states.error")
+											div.icon.icon--questionCircle(ng-show="statusctrl.states.pending")
+										div.status__headline E-indkomst
+										div.status__subline(ng-show="statusctrl.systems.eindkomst.states.isup") Der er forbindelse til E-indkomst.
+										div.status__subline(ng-show="!statusctrl.systems.eindkomst.states.isup") Der er ikke forbindelse til E-indkomst.
+							div.cluster__item.cluster__item--4x1
+								div.cluster__inner
+									div.status__box(data-ng-class="{'status__box--disabled': !statusctrl.systems.municipality.states.isup}")
+										div.status__icon
+											div.icon.icon--checkcircle(ng-show="statusctrl.systems.municipality.states.isup")
+											div.icon.icon--timescircle(ng-show="!statusctrl.systems.municipality.states.isup")
+											div.icon.icon--questionCircle(ng-show="statusctrl.states.error")
+											div.icon.icon--questionCircle(ng-show="statusctrl.states.pending")
+										div.status__headline Kommunale systemer
+										div.status__subline(ng-show="statusctrl.systems.municipality.states.isup") Der er forbindelse til bagvedliggende kommunale systemer.
+										div.status__subline(ng-show="!statusctrl.systems.municipality.states.isup") Der er ikke forbindelse til bagvedliggende kommunale systemer.
+
+	section.partial.container.partial--darkgray.partial--morePadding
+		div.container__content
+			div.container__inner
+				div.partial__headline Brug for hjælp?
+				ul.inlinelist.inlinelist--aligncenter.inlinelist--mobilebreak.inlinelist--tabletbreak
+					li.inlinelist__item
+						div.btn.btn--cut Se vores vejledninger
+					li.inlinelist__item
+						div.btn.btn--cut Se VIDEOVEJLEDNINGen på virk.dk
+					li.inlinelist__item
+						div.btn.btn--cut Prøv demoløsningen på virk.dk
+
+
+
+	section.partial.container
+		div.container__content.container__content--line
+			div.container__inner
+				h1.partial__headline Hvem skal indberette?
+				div.grid.grid--16.grid--spaceright
+					div.rte
+						h2 Arbejdsgiver
+						p Med Nemrefusion skal du som selvstændig foretage digitale indberetninger af sygefravær til kommunen og barselsfravær og til Udbetaling Danmark.
+						p Med NemRefusion kan du indberette på to måder, enten via selvbetjeningsløsningen på Virk.dk eller via system-til-system adgang. Du er ikke tvunget til kun at benytte den ene indgang. Hvis dit lønsystem kan levere en del af indberetningen, kan du færdiggøre resten via webdialogen på Virk.dk.
+						p Som selvstændig skal du derfor beslutte dig for, om du vil benytte system-til-system adgangen. Hvis du vælger at bruge system-til-system adgangen, skal du i dialog med din systemleverandør, som skal tilrette dit system eller kontakte dit eventuelle lønbureau.
+						p Hvis du har en revisor, kan du give revisoren tilladelse til at indberette digitalt på dine vegne.
+				div.grid.grid--8.grid--spaceleft
+					img(src="http://placehold.it/305x350", alt="Remove Me")
+		div.container__content.container__content--line
+			div.container__inner
+				div.grid.grid--8.grid--spaceright
+					img(src="http://placehold.it/305x350", alt="Remove Me")
+				div.grid.grid--16.grid--spaceleft
+					div.rte
+						h2 Selvstændig
+						p Med Nemrefusion skal du som selvstændig foretage digitale indberetninger af sygefravær til kommunen og barselsfravær og til Udbetaling Danmark.
+						p Du skal bruge rollen "Selvstændig", hvis du skal indberette sygdom for dig selv som selvstændig erhvervsdrivende og for medarbejdende ægtefælle. Hvis du skal indberette for dine ansatte, skal du bruge rollen "Arbejdsgiver".
+						h2 Se vores nye folder til selvstændige!
+						p I folderen har vi samlet alle de vigtigste informationer og links, som selvstændige kan få brug for, når de skal igang med at benytte NemRefusion indberetningsløsningen.
+						p Folderen er også i særligt format til udskrift.
+						a.btn DOWNLOAD FOLDER
+		div.container__content
+			div.container__inner
+				div.grid.grid--16.grid--spaceright
+					div.rte
+						h2 A-kasser
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+						p Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+						p Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+				div.grid.grid--8.grid--spaceleft
+					img(src="http://placehold.it/305x350", alt="Remove Me")
+
+
+	section.partial.container.partial--darkgray
+		div.container__content
+			div.container__inner
+				h1.partial__headline Kom i gang med indberetning
+				div.grid.grid--12.grid--spaceright
+					div.rte
+						h2 Få hjaelp til indberetningen
+						p Vi har samlet nogle videofilm og vejledninger, som du kan bruge til at komme godt i gang. Du kan også prøve en demo-løsning, hvor du kan prøve at teste dine indberetninger.
+						a.btn Sådan indberetter du
+				div.grid.grid--12.grid--spaceleft
+					div.rte
+						h2 NemRefusion Support
+						p Hjælp til generelle og tekniske spørgsmål om selve indberetningsløsningen til brugere af NemRefusion - også kommunale sagsbehandlere.
+						a.btn Klik her for support
+
+
+	section.partial.container.partial--blue.partial--morePadding
+		div.container__content
+			div.container__inner
+				div.grid.grid--8.grid--spaceright
+					img.query.query--desktop(src="./img/content/partial_img_2.png", alt="")
+				div.grid.grid--16.grid--spaceleft
+					div.rte
+						h1 Sådan indberetter du
+						p Se hvilke tre ting du skal gøre for at kunne foretagfe en indberetning
+						ul.numberlist
+							li.numberlist__item
+								h2.numberlist__headline Du skal have en NemID medarbejder signatur
+								p For at logge på NemRefusion, skal du have en NemID medarbejdersignatur. Du kan ikke bruge din personlige NemID. Det er nødvendigt med en NemID medarbejdersignatur, da signaturen er sat op imod dit CVR nummer, og NemRefusion kan derved tjekke, at det er en reel virksomhed, der bruger NemRefusion.
+								a.btn Bestil medarbejdersignatur
+							li.numberlist__item
+								h2.numberlist__headline Du skal have rettigheder til NemRefusion
+								p Når du har modtaget din NemID medarbejdersignatur, skal du have rettighed til at anmode om refusion. Det er virksomhedens NemLogin-administrator, som tildeler rettigheder.
+								p Tildeling af rettigheder sker via NemLog-in/Brugeradministration på virk.dk
+								a.btn GÅ TIL BRUGERADMINSTRATION
+							li.numberlist__item
+								h2.numberlist__headline Gå til virk.dk og log på
+								p Gå til www.virk.dk og vælg NemRefusion, som du finder under Mest anvendte indberetninger på forsiden af Virk.dk eller klik på knappen
+								a.btn.btn--orange GÅ TIL INDBERETNING
+
+	section.partial.container.partial--morePadding
+		div.container__content
+			div.container__inner
+				div.partial__headline Ofte stillede spørgsmål
+				div.qna(data-ng-controller="QnaCtrl")
+					div.qna__intro
+						div.rte
+							h2 QnA headline
+							p QnA Text
+					div.qna__item(data-ng-class="{'qna__item--active': checkActive(1)}")
+						div.qna__itemHead(data-ng-click="toggle(1)")
+							div.qna__toggle(data-ng-click="toggle(1)")
+								div.icon.icon--chevronright
+							h3 Head 1
+						div.qna__itemBody
+							div.rte
+								include ../blocks/lorem
+					div.qna__item(data-ng-class="{'qna__item--active': checkActive(2)}")
+						div.qna__itemHead(data-ng-click="toggle(2)")
+							div.qna__toggle(data-ng-click="toggle(2)")
+								div.icon.icon--chevronright
+							h3 Head 2
+						div.qna__itemBody
+							div.rte
+								include ../blocks/lorem
+					div.qna__item(data-ng-class="{'qna__item--active': checkActive(3)}")
+						div.qna__itemHead(data-ng-click="toggle(3)")
+							div.qna__toggle(data-ng-click="toggle(3)")
+								div.icon.icon--chevronright
+							h3 Head 3
+						div.qna__itemBody
+							div.rte
+								include ../blocks/lorem
+					div.qna__item(data-ng-class="{'qna__item--active': checkActive(4)}")
+						div.qna__itemHead(data-ng-click="toggle(4)")
+							div.qna__toggle(data-ng-click="toggle(4)")
+								div.icon.icon--chevronright
+							h3 Head 4
+						div.qna__itemBody
+							div.rte
+								include ../blocks/lorem
+					div.qna__item(data-ng-class="{'qna__item--active': checkActive(5)}")
+						div.qna__itemHead(data-ng-click="toggle(5)")
+							div.qna__toggle(data-ng-click="toggle(5)")
+								div.icon.icon--chevronright
+							h3 Head 5
+						div.qna__itemBody
+							div.rte
+								include ../blocks/lorem
+
+				div.partial__center
+					a.btn Se flere spørgsmål
+
+
+
+	section.partial.container.partial--blue
+		div.container__content
+			div.container__inner
+				div.grid.grid--12.grid--spaceright
+					| image
+				div.grid.grid--12.grid--spaceleft
+					div.rte
+						h1 Tilmeld informationsmail
+						p Informationsmailen vil blive udsendt, når der er information om eksempelvis ny lovgivning, ændrede snitfladebeskrivelser eller nye versioner af løsningen.
+						a.btn Tilmeld
+
+
+
+	section.partial.container.partial--noBottomPadding.partial--noTopPadding
+		div.container__content
+			div.container__inner
+				div.content
+
+					div.content__aside.query.query--desktop(data-ng-controller="MinHeightCtrl", data-ng-style="minheightctrl.css")
+						div.sticky.sticky--leftmenu(data-ng-controller="StickyCtrl", data-ng-style="css", data-ng-class="{'sticky--fixed': states.sticky}", data-sticky-topoffset="80")
+							div.leftmenu
+								ul.leftmenu__lv1
+									li.leftmenu__item.leftmenu__item--category Support
+									li.leftmenu__item
+										a Kontakt
+										div.leftmenu__itemindicator
+									li.leftmenu__item.leftmenu__item--active
+										a Driftstatus
+										div.leftmenu__itemindicator
+									li.leftmenu__item
+										a Aktuelt fra support
+										div.leftmenu__itemindicator
+									li.leftmenu__item
+										a Ofte stillede spørgsmål
+										div.leftmenu__itemindicator
+									li.leftmenu__item
+										a kommende systemændringer
+										div.leftmenu__itemindicator
+									li.leftmenu__item
+										a tekniske krav
+										div.leftmenu__itemindicator
+									li.leftmenu__item.leftmenu__item--category Nyheder
+									li.leftmenu__item
+										a Sidste nyt
+										div.leftmenu__itemindicator
+									li.leftmenu__item
+										a informationsmail
+										div.leftmenu__itemindicator
+
+
+					div.content__main.content__main--line
+						div.status.color.color--blue.color--bg
+							div.rte
+								h1 Sidste nyt
+								p Vi udsender nyheder omkring NemRefusion løsningen, når der er behov for det. Vælg hvilken sektion du har interesse i nedenfor.
+							div.cluster
+								div.cluster__list
+									div.cluster__item.cluster__item--2x1
+										div.cluster__inner
+											a.status__box
+												div.status__icon
+													div.icon.icon--chevroncircleright
+												div.status__headline Arbejdsgivere
+												div.status__subline Se nyheder
+									div.cluster__item.cluster__item--2x1
+										div.cluster__inner
+											a.status__box
+												div.status__icon
+													div.icon.icon--chevroncircleright
+												div.status__headline Arbejdsgivere
+												div.status__subline Se nyheder
+									div.cluster__item.cluster__item--2x1
+										div.cluster__inner
+											a.status__box
+												div.status__icon
+													div.icon.icon--chevroncircleright
+												div.status__headline Arbejdsgivere
+												div.status__subline Se nyheder
+									div.cluster__item.cluster__item--2x1
+										div.cluster__inner
+											a.status__box
+												div.status__icon
+													div.icon.icon--chevroncircleright
+												div.status__headline Arbejdsgivere
+												div.status__subline Se nyheder
+									div.cluster__item.cluster__item--2x1
+										div.cluster__inner
+											a.status__box
+												div.status__icon
+													div.icon.icon--chevroncircleright
+												div.status__headline Arbejdsgivere
+												div.status__subline Se nyheder
+
+						div.qna(data-ng-controller="QnaCtrl")
+							div.qna__intro
+								div.rte
+									h2 Sidste nyt for arbejdsgivere
+									p Her kan du se hvilke hændelser, der i den seneste tid kan have påvirket indberetninger i NemRefusion. I højre side kan du se den aktuelle driftssituation. Følg med i mere generelle problemstillinger under "Aktuelt fra support"
+							div.qna__item(data-ng-class="{'qna__item--active': checkActive(1)}")
+								div.qna__itemHead(data-ng-click="toggle(1)")
+									div.qna__toggle(data-ng-click="toggle(1)")
+										div.icon.icon--chevronright
+									p 03.april 2014
+									h3 Kommende ændringer
+								div.qna__itemBody
+									div.rte
+										include ../blocks/lorem
+							div.qna__item(data-ng-class="{'qna__item--active': checkActive(2)}")
+								div.qna__itemHead(data-ng-click="toggle(2)")
+									div.qna__toggle(data-ng-click="toggle(2)")
+										div.icon.icon--chevronright
+									h3 Head 2
+								div.qna__itemBody
+									div.rte
+										include ../blocks/lorem
+							div.qna__item(data-ng-class="{'qna__item--active': checkActive(3)}")
+								div.qna__itemHead(data-ng-click="toggle(3)")
+									div.qna__toggle(data-ng-click="toggle(3)")
+										div.icon.icon--chevronright
+									h3 Head 3
+								div.qna__itemBody
+									div.rte
+										include ../blocks/lorem
+							div.qna__item(data-ng-class="{'qna__item--active': checkActive(4)}")
+								div.qna__itemHead(data-ng-click="toggle(4)")
+									div.qna__toggle(data-ng-click="toggle(4)")
+										div.icon.icon--chevronright
+									h3 Head 4
+								div.qna__itemBody
+									div.rte
+										include ../blocks/lorem
+							div.qna__item(data-ng-class="{'qna__item--active': checkActive(5)}")
+								div.qna__itemHead(data-ng-click="toggle(5)")
+									div.qna__toggle(data-ng-click="toggle(5)")
+										div.icon.icon--chevronright
+									h3 Head 5
+								div.qna__itemBody
+									div.rte
+										include ../blocks/lorem
+
+							div.partial__center.partial__center--margintop
+								a.btn Indlæs flere
+
+
+						div.rte
+							p
+								b En kort beskrivelse af hvordan du som ny bruger kommer igang med NemRefusion:
+							p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+						ul.list
+							li.list__line
+								div.list__innerleft
+									div.rte Lorem ipsum dolor sit amet, consectabore et dolore ud exeal
+								div.list__innerright
+									a.btn Hent
+							li.list__line
+								div.list__innerleft
+									div.rte Lorem ipsum dolor sit amet, consectabore et dolore ud exeal
+								div.list__innerright
+									a.btn Hent
+							li.list__line
+								div.list__innerleft
+									div.rte Lorem ipsum dolor sit amet, consectabore et dolore ud exeal
+								div.list__innerright
+									a.btn Hent
+							li.list__line
+								div.list__innerleft
+									div.rte Lorem ipsum dolor sit amet, consectabore et dolore ud exeal
+								div.list__innerright
+									a.btn Hent
+
+						div.rte
+							p
+								b En kort beskrivelse af hvordan du som ny bruger kommer igang med NemRefusion:
+							p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+						ul.list
+							li.list__line
+								div.list__innerleft
+									div.rte Lorem ipsum dolor sit amet, consectabore et dolore ud exeal
+								div.list__innerright
+									a.btn Hent
+							li.list__line
+								div.list__innerleft
+									div.rte Lorem ipsum dolor sit amet, consectabore et dolore ud exeal
+								div.list__innerright
+									a.btn Hent
+
+
+
+	//section.partial.partial--lagoon.container
+		div.container__content
+			div.container__inner Lagoon
+				div.content
+					div.content__main
+						div.content__partial
+							div.prototype(style="height: 900px;")
+								div.prototype__name Main Content
+						div.content__partial
+							div.prototype(style="height: 400px;")
+								div.prototype__name Main Content
+
+
+
+
+//Har ikke problemer med touch events scroll. Der opdaterer det fint. Det er mere når reloader sitet

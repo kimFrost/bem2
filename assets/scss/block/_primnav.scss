@@ -1,0 +1,45 @@
+
+.primnav {
+	display: block;
+	width: 100%;
+}
+.primnav:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.primnav__item {
+	display: block;
+	float: left;
+}
+.primnav__item + .primnav__item {
+	margin-left: 10px;
+}
+.primnav__item--active {
+	color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

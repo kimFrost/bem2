@@ -1,0 +1,107 @@
+
+.bem {
+	display: block;
+	width: 100%;
+	padding-bottom: 200px;
+	&,* {
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+	}
+}
+.bem__section {
+	padding: 20px;
+	width: 100%;
+	display: block;
+	border-bottom: 1px solid #d6d6d6;
+	background-color: #fbfbfb;
+	&:nth-child(odd) {
+		 background-color: #ebebeb;
+	 }
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+.bem__headline {
+	@include fontSize(zeta);
+	width: 100%;
+	margin-bottom: 20px;
+}
+.bem__code {
+	width: 50%;
+	float: left;
+}
+.bem__code + .bem__view {
+	padding-left: 20px;
+}
+.bem__view {
+	overflow: hidden;
+}
+.bem__inner {
+	padding: 20px;
+}
+.bem__inner--blue {
+	background-color: #d3edff;
+}
+.bem__inner--green {
+	background-color: #d3ffe3;
+}
+.bem__textarea {
+	padding: 10px;
+	width: 100%;
+	min-height: 60px;
+	max-height: 400px;
+	display: block;
+}
+.bem__textarea--css {
+	min-height: 200px;
+}
+.bem__intro {
+	@include fontSize(delta);
+	display: block;
+	width: 100%;
+}
+.bem__intro > p{
+	margin-bottom: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$__blockName: 'bem';
+
+/*
+@include block($__blockName) {
+
+}
+*/
+

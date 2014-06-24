@@ -1,0 +1,44 @@
+
+.block {
+	display: block;
+	margin-bottom: 10px;
+}
+.block__element {
+	display: block;
+	width: 200px;
+	overflow: hidden;
+	background-color: #000;
+	color: #fff;
+	margin-bottom: 5px;
+}
+.block--modifier {
+	opacity: 0.6;
+}
+.block--modifier .block__element {
+	width: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
